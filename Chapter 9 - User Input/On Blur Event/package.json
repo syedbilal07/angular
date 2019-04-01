@@ -1,0 +1,30 @@
+{
+  "name": "on-blur-event",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "lite": "lite-server",
+    "typings": "typings",
+    "postinstall": "typings install"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@angular/compiler": "6.0.3",
+    "@angular/core": "6.0.3",
+    "@angular/http": "6.0.3",
+	"@angular/forms": "6.0.3",
+    "@angular/platform-browser": "6.0.3",
+    "@angular/platform-browser-dynamic": "6.0.3",
+    "@angular/router": "6.0.3",
+    "@angular/upgrade": "6.0.3"
+  },
+  "devDependencies": {
+    "@angular/cli": "^6.0.5",
+    "concurrently": "^3.5.1",
+    "lite-server": "^2.3.0",
+    "typescript": "^2.8.3",
+    "typings": "^2.1.1"
+  }
+}

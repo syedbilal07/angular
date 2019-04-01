@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Components</title>
+    <script src="scripts/es6-shim.min.js"></script>
+    <script src="scripts/system-polyfills.js"></script>
+    <script src="scripts/angular2-polyfills.js"></script>
+    <script src="scripts/system.js"></script>
+    <script src="scripts/typescript.js"></script>
+    <script src="scripts/Rx.js"></script>
+    <script src="scripts/angular2.dev.js"></script>
+    <script>
+        System.config({
+            //transpiler tool converts TypeScript to JavaScript
+            transpiler: 'typescript',
+            //emitDecoratorMetadata flag used by JavaScript output to create metadata from the decorators
+            typescriptOptions: {emitDecoratorMetadata: true},
+            packages: {'app': {defaultExtension: 'ts'}},
+            map: {'app': 'app'}
+        });
+        System.import('app/component_main')
+            .then(null, console.error.bind(console));
+    </script>
+</head>
+<body>
+<!--When Angular calls the bootstrap function in main.ts, it reads the Component metadata, finds the 'app' selector,
+ locates an element tag named app, and loads the application between those tags.-->
+<my-app>Loading...</my-app>
+</body>
+</html>

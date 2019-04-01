@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>Implementing A Custom Validator Directive</title>
+    </head>
+    <body>
+        <div>
+            <h1>Add User</h1>
+            <form #f = "ngForm" novalidate (ngSubmit) = "save(f.value, f.valid">
+                <!-- we will place our fields here -->
+                <div>
+                    <label>User Name</label>
+                    <input type = "text" name = "username" [ngModel] = "user.username" required minlength = "5" maxlength = "8" #username = "ngModel">
+                    <small [hidden] = "username.valid || (username.pristine && !f.submitted)">
+                        User Name Is Required (Min 5 Characters)
+                    </small>
+                </div>
+                <pre *ngIf = "username.errors">{{username.errors | json}}</pre>
+                <div>
+                    <label>Password</label>
+                    <input type = "password" class = "form-control"  name = "password" [ngModel] = "user.password" required #password = "ngModel" reverse = "true">
+                    <small [hidden] = "password.valid || (password.pristine && !f.submitted)">
+                        Password Is Required
+                    </small>
+                </div>
+                <div>
+                    <label>Confirm Password</label>
+                    <input type = "text" name = "confirmPassword" class = "form-control" [ngModel] = "user.confirmPassword" required validateEqual = "password" #confirmPassword = "ngModel">
+                    <small [hidden] = "confirmPassword.valid || (confirmPassword.pristine && !f.submitted)">
+                        Password Mismatch
+                    </small>
+                </div>
+
+                <button type = "submit" [disabled] = "!myForm.valid">Submit</button>
+            </form>
+        </div>
+    </body>
+</html>

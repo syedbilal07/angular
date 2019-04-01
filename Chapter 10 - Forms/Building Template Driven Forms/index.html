@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Template Driven Form</title>
+    <script src="scripts/es6-shim.min.js"></script>
+    <script src="scripts/system-polyfills.js"></script>
+    <script src="scripts/angular2-polyfills.js"></script>
+    <script src="scripts/system.js"></script>
+    <script src="scripts/typescript.js"></script>
+    <script src="scripts/Rx.js"></script>
+    <script src="scripts/angular2.dev.js"></script>
+    <script src="systemjs.config.js"></script>
+    <script>
+        System.config({
+            transpiler: 'typescript',
+            typescriptOptions: { emitDecoratorMetadata: true },
+            packages: {'app': {defaultExtension: 'ts'}},
+            map: { 'app': 'app' }
+        });
+        System.import('app/main')
+            .then(null, console.error.bind(console));
+    </script>
+</head>
+<body>
+<my-app>My Form....!</my-app>
+</body>
+</html>

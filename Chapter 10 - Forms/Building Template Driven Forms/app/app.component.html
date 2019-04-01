@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Template Driven Form</title>
+    </head>
+    <body>
+        <div>
+            <h1>Add User</h1>
+            <form #f = "ngForm" (ngSubmit) = "save(f.value, f.valid)" novalidate>
+                <!-- we will place our fields here -->
+                <!--name-->
+                <div>
+                   <label>Name</label>
+                    <!--bind name to ngModel, it's required with minimum 5 characters-->
+                    <input type = "text" name = "name" [(ngModel)] = "user.name" #name = "ngModel" required minLength = "5">
+                    <!--show error only when field is not valid & it's dirty or form submited-->
+                    <small [hidden] = "name.valid || (name.pristine && !f.submitted)">
+                        Name Is Required (Min 5 Characters)
+                    </small>
+                </div>
+                <!--adrress group-->
+                <div ngModelGroup = "address">
+                    <!--street-->
+                    <div>
+                        <label>Street</label>
+                        <input type = "text" name = "street" [(ngModel)] = "user.address.street" #street = "ngModel" required>
+                        <small [hidden] = "street.valid || (street.pristine && !f.submitted)" class = "text-danger">
+                            Street Is Required
+                        </small>
+                    </div>
+                    <div>
+                        <label>Post Code</label>
+                        <input type= "text" name = "postcode" [(ngModel)] = "user.address.postcode">
+                    </div>
+                </div>
+                <button type = "submit">Submit</button>
+            </form>
+        </div>
+    </body>
+</html>
